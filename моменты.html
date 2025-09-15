@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши любимые моменты</title>
+    <link rel="stylesheet" href="моменты.css">
+</head>
+<body>
+    <header>
+        <h1>Наши любимые моменты</h1>
+    </header>
+
+    <nav>
+        <a href="главная.html">Главная</a>
+        <a href="моменты.html" class="active">Наши любимые моменты</a>
+        <a href="планы.html">Наши планы</a>
+        <a href="мечты.html">Мечты</a>
+    </nav>
+
+    <main>
+        <button id="addMomentBtn">Добавить момент</button>
+
+        <form id="addMomentForm" style="display: none;">
+            <input type="file" id="momentPhoto" accept="image/*" required>
+            <input type="text" id="momentCaption" placeholder="Введите подпись" required>
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <!-- Сообщение, если галерея пустая -->
+        <p id="emptyMessage">У вас пока нет моментов. Добавьте первый!</p>
+
+        <div class="gallery"></div>
+    </main>
+
+    <footer>
+        <p>© 2025 Любимой Ксю</p>
+    </footer>
+
+    <!-- Подключаем тот же JS-файл, что и на главной -->
+    <script src="главная.js"></script>
+</body>
+</html>

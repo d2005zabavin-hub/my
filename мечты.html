@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мечты</title>
+    <link rel="stylesheet" href="мечты.css">
+</head>
+<body>
+    <div class="background"></div>
+
+    <header>
+        <h1>Мечты</h1>
+    </header>
+
+    <nav>
+        <a href="главная.html">Главная</a>
+        <a href="моменты.html">Наши любимые моменты</a>
+        <a href="планы.html">Наши планы</a>
+        <a href="мечты.html" class="active">Мечты</a>
+    </nav>
+
+   <main class="dreams-section">
+    <button id="addDreamBtn">Добавить мечту</button>
+
+    <form id="addDreamForm" style="display:none;">
+        <input type="text" id="dreamText" placeholder="Введите текст мечты">
+        <input type="file" id="dreamPhoto" accept="image/*">
+        <button type="submit">Сохранить мечту</button>
+    </form>
+
+    <p id="emptyMessage">У вас пока нет мечт</p>
+    <div class="dreams-gallery"></div>
+</main>
+
+
+    <footer>
+        <p>© 2025 Любимой Ксю</p>
+    </footer>
+
+    <script src="главная.js"></script>
+</body>
+</html>

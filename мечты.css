@@ -1,0 +1,206 @@
+/* Сброс и базовые стили */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    background: #000;
+}
+
+/* Фоновое изображение на весь экран */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url("dreams_bg.jpg") no-repeat center center;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out, transform 0.2s ease-out;
+    z-index: -1;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+/* Навигация */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover, nav a.active {
+    color: #ff77ff;
+    transform: scale(1.1);
+}
+
+/* Кнопка добавления мечты */
+#addDreamBtn {
+    background-color: #ff77ff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#addDreamBtn:hover {
+    background-color: #ffbbff;
+    transform: scale(1.05);
+}
+
+/* Форма добавления мечты */
+#addDreamForm input[type="text"],
+#addDreamForm input[type="file"],
+#addDreamForm button {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+}
+
+#addDreamForm button {
+    background-color: #ff77ff;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#addDreamForm button:hover {
+    background-color: #ffbbff;
+    transform: scale(1.05);
+}
+
+/* Пустое сообщение */
+#emptyMessage {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #ff77ff;
+}
+
+/* Галерея мечт */
+.dreams-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Каждая мечта - карточка */
+.dream-note {
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    padding: 15px;
+    width: 200px;
+    min-height: 100px;
+    box-shadow: 0 0 15px #ff77ff50, 0 0 30px #ff77ff20;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: pointer;
+}
+
+.dream-note:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #ff77ff80, 0 0 50px #ff77ff40;
+    background: rgba(0,0,0,0.8);
+}
+
+/* Изображения мечт */
+.dream-note img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+/* Текст мечты */
+.dream-note p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Анимация появления */
+.fade-in {
+    animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Заголовки и футер */
+h1, h2, p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatText 4s ease-in-out infinite alternate, neonGlow 6s ease-in-out infinite alternate;
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+body.loaded h1, body.loaded h2, body.loaded p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes neonGlow {
+    0% { color: #ff77ff; text-shadow: 0 0 5px #ff77ff, 0 0 10px #ff77ff; }
+    25% { color: #ffbbff; text-shadow: 0 0 10px #ffbbff, 0 0 20px #ffbbff; }
+    50% { color: #ff88ff; text-shadow: 0 0 15px #ff88ff, 0 0 25px #ff88ff; }
+    75% { color: #ffccff; text-shadow: 0 0 10px #ffccff, 0 0 20px #ffccff; }
+    100% { color: #ff77ff; text-shadow: 0 0 5px #ff77ff, 0 0 10px #ff77ff; }
+}
+
+/* Футер */
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+    animation: neonFooter 6s ease-in-out infinite alternate;
+}
+
+body.loaded footer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes neonFooter {
+    0% { color: #ff77ff; text-shadow: 0 0 5px #ff77ff, 0 0 10px #ff77ff; }
+    25% { color: #ffbbff; text-shadow: 0 0 10px #ffbbff, 0 0 15px #ffbbff; }
+    50% { color: #ff88ff; text-shadow: 0 0 15px #ff88ff, 0 0 20px #ff88ff; }
+    75% { color: #ffccff; text-shadow: 0 0 10px #ffccff, 0 0 20px #ffccff; }
+    100% { color: #ff77ff; text-shadow: 0 0 5px #ff77ff, 0 0 10px #ff77ff; }
+}

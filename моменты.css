@@ -1,0 +1,224 @@
+/* Сброс и базовые стили */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    background: #000;
+    overflow-x: hidden;
+}
+
+/* Фон */
+.background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: url("moments_bg.jpg") no-repeat center center/cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out, transform 0.4s ease-out;
+    z-index: -1;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.45);
+}
+
+/* Навигация */
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover, nav a.active {
+    color: #ff77ff;
+    transform: scale(1.1);
+}
+
+/* Заголовки */
+h1, h2, p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatText 4s ease-in-out infinite alternate,
+               neonGlow 6s ease-in-out infinite alternate;
+    transition: opacity 1.5s ease, transform 1.5s ease;
+    cursor: default;
+}
+
+body.loaded h1,
+body.loaded h2,
+body.loaded p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes floatText {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes neonGlow {
+    0% { color: #ff77ff; text-shadow: 0 0 6px #ff77ff, 0 0 12px #ff77ff, 0 0 24px #ff77ff; }
+    25% { color: #ffbbff; text-shadow: 0 0 12px #ffbbff, 0 0 20px #ffbbff, 0 0 30px #ffbbff; }
+    50% { color: #ff99ff; text-shadow: 0 0 15px #ff99ff, 0 0 25px #ff99ff, 0 0 35px #ff99ff; }
+    75% { color: #ffe0ff; text-shadow: 0 0 10px #ffe0ff, 0 0 22px #ffe0ff, 0 0 32px #ffe0ff; }
+    100% { color: #ff77ff; text-shadow: 0 0 6px #ff77ff, 0 0 12px #ff77ff, 0 0 24px #ff77ff; }
+}
+
+/* Галерея */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 22px;
+    justify-items: center;
+    margin: 30px auto;
+    max-width: 1000px;
+    padding: 0 10px;
+}
+
+.gallery figure {
+    margin: 0;
+    background: rgba(0,0,0,0.55);
+    padding: 12px;
+    border-radius: 14px;
+    width: 220px;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255,119,255,0.15);
+}
+
+.gallery figure:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px #ff77ff, 0 0 45px #ff77ff, 0 0 70px #ff77ff;
+    background: rgba(0,0,0,0.75);
+}
+
+.gallery img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.gallery figcaption {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #fff;
+    transition: color 0.3s, text-shadow 0.3s, transform 0.3s;
+}
+
+.gallery figure:hover figcaption {
+    color: #ffbbff;
+    text-shadow: 0 0 6px #ffbbff, 0 0 14px #ffbbff, 0 0 22px #ffbbff;
+    transform: scale(1.05);
+}
+
+/* Плавное появление */
+.fade-in {
+    animation: fadeInUp 0.9s forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Кнопка */
+#addMomentBtn {
+    background: linear-gradient(135deg, #ff77ff, #ffbbff);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#addMomentBtn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px #ff99ff, 0 0 30px #ff77ff;
+}
+
+/* Форма */
+#addMomentForm {
+    margin-top: 18px;
+    padding: 14px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    display: none;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 20px rgba(255,119,255,0.2);
+}
+
+#addMomentForm input[type="text"],
+#addMomentForm input[type="file"],
+#addMomentForm button {
+    display: block;
+    margin: 10px auto;
+    padding: 9px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+}
+
+#addMomentForm input[type="text"],
+#addMomentForm input[type="file"] {
+    width: 90%;
+    background: #222;
+    color: #fff;
+}
+
+#addMomentForm button {
+    background: linear-gradient(135deg, #ff77ff, #ffbbff);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#addMomentForm button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff77ff, 0 0 20px #ffbbff;
+}
+
+/* Футер */
+footer {
+    position: fixed;
+    bottom: 12px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+    animation: neonFooter 6s ease-in-out infinite alternate;
+}
+
+body.loaded footer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes neonFooter {
+    0% { color: #ff77ff; text-shadow: 0 0 6px #ff77ff, 0 0 12px #ff77ff; }
+    25% { color: #ffbbff; text-shadow: 0 0 10px #ffbbff, 0 0 18px #ffbbff; }
+    50% { color: #ff99ff; text-shadow: 0 0 12px #ff99ff, 0 0 22px #ff99ff; }
+    75% { color: #ffe0ff; text-shadow: 0 0 14px #ffe0ff, 0 0 24px #ffe0ff; }
+    100% { color: #ff77ff; text-shadow: 0 0 6px #ff77ff, 0 0 12px #ff77ff; }
+}

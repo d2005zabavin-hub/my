@@ -1,0 +1,175 @@
+/* Базовые стили */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    background: #000;
+}
+
+/* Фоновое изображение */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url("plans_bg.jpg") no-repeat center center;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out, transform 0.2s ease-out;
+    z-index: -1;
+}
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+/* Навигация */
+nav {
+    margin-top: 20px;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+nav a:hover, nav a.active {
+    color: #ff77ff;
+    transform: scale(1.1);
+}
+
+/* Заголовок */
+h1, p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatText 4s ease-in-out infinite alternate, neonGlow 6s ease-in-out infinite alternate;
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+body.loaded h1,
+body.loaded p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Анимации текста */
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+@keyframes neonGlow {
+    0% { color: #ff77ff; text-shadow: 0 0 5px #ff77ff; }
+    25% { color: #ffbbff; text-shadow: 0 0 10px #ffbbff; }
+    50% { color: #ff88ff; text-shadow: 0 0 15px #ff88ff; }
+    75% { color: #ffccff; text-shadow: 0 0 10px #ffccff; }
+    100% { color: #ff77ff; text-shadow: 0 0 5px #ff77ff; }
+}
+
+/* Контейнер для планов */
+.plans-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Карточка плана в стиле iPhone заметки */
+.plan-note {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 15px 20px;
+    border-radius: 15px;
+    width: 220px;
+    min-height: 80px;
+    box-shadow: 0 4px 15px rgba(255, 119, 255, 0.4);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    position: relative;
+    opacity: 0;
+}
+
+/* Подсветка при наведении */
+.plan-note:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 119, 255, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Плавное появление карточки */
+.fade-in {
+    animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Форма добавления плана */
+#addPlanForm {
+    margin-top: 20px;
+}
+#addPlanForm input[type="text"] {
+    width: 200px;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+}
+#addPlanForm button {
+    padding: 8px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff77ff;
+    color: #000;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+#addPlanForm button:hover {
+    background-color: #ffbbff;
+    transform: scale(1.05);
+}
+
+/* Кнопка добавления плана */
+#addPlanBtn {
+    background-color: #ff77ff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s, transform 0.3s;
+}
+#addPlanBtn:hover {
+    background-color: #ffbbff;
+    transform: scale(1.05);
+}
+
+/* Футер */
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    animation: neonFooter 6s ease-in-out infinite alternate;
+}
+@keyframes neonFooter {
+    0% { color: #ff77ff; text-shadow: 0 0 5px #ff77ff; }
+    25% { color: #ffbbff; text-shadow: 0 0 10px #ffbbff; }
+    50% { color: #ff88ff; text-shadow: 0 0 15px #ff88ff; }
+    75% { color: #ffccff; text-shadow: 0 0 10px #ffccff; }
+    100% { color: #ff77ff; text-shadow: 0 0 5px #ff77ff; }
+}

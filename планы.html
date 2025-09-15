@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши планы</title>
+    <link rel="stylesheet" href="планы.css">
+</head>
+<body>
+    <div class="background"></div>
+
+    <!-- Навигация -->
+    <nav>
+        <a href="главная.html">Главная</a>
+        <a href="планы.html" class="active">Наши планы</a>
+        <a href="моменты.html">Наши любимые моменты</a>
+        <a href="мечты.html">Мечты</a>
+    </nav>
+
+    <!-- Заголовок -->
+    <h1>Наши планы</h1>
+
+    <!-- Контент -->
+    <section class="plans-section">
+        <p>Здесь будут отображаться наши планы ✨</p>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <p>© 2025 Наш сайт</p>
+    </footer>
+
+    <!-- Подключаем общий JS -->
+    <script src="главная.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.classList.add("loaded");
+        });
+    </script>
+</body>
+</html>

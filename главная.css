@@ -1,0 +1,159 @@
+/* Сброс и базовые стили */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    background: #000; /* запасной цвет */
+}
+
+/* Фоновое изображение на весь экран */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url("1.jpg") no-repeat center center;
+    background-size: cover; /* подгоняет под любой экран */
+    opacity: 0;
+    transition: opacity 2s ease-in-out, transform 0.2s ease-out;
+    z-index: -1;
+}
+
+/* Полупрозрачная подложка для улучшения читаемости текста */
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+/* Стили блоков */
+header, nav, main, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Навигация */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+    color: #f0c;
+    transform: scale(1.1);
+}
+
+/* Основной блок с полупрозрачной подложкой */
+main {
+    background: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+/* Заголовки и параграфы: анимация появления, колебание и неон */
+h1, h2, p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatText 4s ease-in-out infinite alternate, neonGlow 6s ease-in-out infinite alternate;
+    transition: opacity 1.5s ease, transform 1.5s ease, text-shadow 0.3s ease, color 0.3s ease;
+    cursor: default;
+}
+
+/* Появление после загрузки страницы */
+body.loaded h1,
+body.loaded h2,
+body.loaded p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Лёгкое колебание текста */
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Неоновое свечение текста */
+@keyframes neonGlow {
+    0% {
+        color: #ff77ff;
+        text-shadow: 0 0 5px #ff77ff, 0 0 10px #ff77ff, 0 0 20px #ff77ff;
+    }
+    25% {
+        color: #ffbbff;
+        text-shadow: 0 0 10px #ffbbff, 0 0 20px #ffbbff, 0 0 30px #ffbbff;
+    }
+    50% {
+        color: #ff88ff;
+        text-shadow: 0 0 15px #ff88ff, 0 0 25px #ff88ff, 0 0 35px #ff88ff;
+    }
+    75% {
+        color: #ffccff;
+        text-shadow: 0 0 10px #ffccff, 0 0 20px #ffccff, 0 0 30px #ffccff;
+    }
+    100% {
+        color: #ff77ff;
+        text-shadow: 0 0 5px #ff77ff, 0 0 10px #ff77ff, 0 0 20px #ff77ff;
+    }
+}
+
+/* Подсветка текста при наведении мыши */
+h1:hover, h2:hover, p:hover {
+    color: #f0c;
+    text-shadow: 0 0 10px #f0c, 0 0 20px #f0c;
+}
+
+/* Футер внизу экрана с неоновым мерцанием */
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+    animation: neonFooter 6s ease-in-out infinite alternate;
+}
+
+/* Появление футера после загрузки */
+body.loaded footer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Анимация неонового мерцания футера */
+@keyframes neonFooter {
+    0% {
+        color: #ff77ff;
+        text-shadow: 0 0 5px #ff77ff, 0 0 10px #ff77ff, 0 0 15px #ff77ff;
+    }
+    25% {
+        color: #ffbbff;
+        text-shadow: 0 0 10px #ffbbff, 0 0 15px #ffbbff, 0 0 20px #ffbbff;
+    }
+    50% {
+        color: #ff88ff;
+        text-shadow: 0 0 15px #ff88ff, 0 0 20px #ff88ff, 0 0 25px #ff88ff;
+    }
+    75% {
+        color: #ffccff;
+        text-shadow: 0 0 10px #ffccff, 0 0 20px #ffccff, 0 0 25px #ffccff;
+    }
+    100% {
+        color: #ff77ff;
+        text-shadow: 0 0 5px #ff77ff, 0 0 10px #ff77ff, 0 0 15px #ff77ff;
+    }
+}
